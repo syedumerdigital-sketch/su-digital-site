@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SU Digital — Syed Muhammad Umer Chishti | Founder &amp; Lead Architect</title>
+  <meta name="description" content="Portfolio of Syed Muhammad Umer Chishti, Founder &amp; Lead Architect at SU Digital. High-velocity SPAs, quantitative automation, and glassmorphic UI/UX." />
+  <meta property="og:title" content="SU Digital — Syed Muhammad Umer Chishti" />
+  <meta property="og:description" content="Ultra-modern Cyber Dark Portfolio. Founder &amp; Lead Architect | Web Developer &amp; UI Specialist." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyberDark: '#0a0d14',
+            cyberPanel: '#0e1424',
+            neonGreen: '#10B981',
+            neonBright: '#00ff88',
+            gold: '#fbbf24',
+          },
+          fontFamily: {
+            display: ['Outfit', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-dark: #0a0d14;
+      --neon-green: #10B981;
+      --neon-bright: #00ff88;
+      --gold: #fbbf24;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background-color: #0a0d14;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Glassmorphism Primitives */
+    .glass-panel {
+      background: rgba(13, 19, 32, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-panel-hover:hover {
+      background: rgba(18, 28, 48, 0.9);
+      border-color: rgba(16, 185, 129, 0.45);
+      box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.22), 0 0 25px rgba(16, 185, 129, 0.15);
+      transform: translateY(-4px) scale(1.015);
+    }
+
+    /* Continuous 360-degree rotating neon cyber border container */
+    .rotating-cyber-frame {
+      position: relative;
+      overflow: hidden;
+      padding: 2.5px;
+      border-radius: 1.25rem;
+    }
+
+    .rotating-cyber-frame::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        transparent,
+        rgba(16, 185, 129, 0.9),
+        rgba(0, 255, 136, 1),
+        rgba(251, 191, 36, 0.9),
+        transparent 65%
+      );
+      animation: cyberSpin 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes cyberSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes float3d {
+      0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+      50% { transform: translateY(-16px) rotateX(6deg) rotateY(-6deg); }
+    }
+
+    @keyframes particleDrift {
+      0% { transform: translateY(105vh) scale(0.6); opacity: 0; }
+      15% { opacity: 0.85; }
+      85% { opacity: 0.85; }
+      100% { transform: translateY(-5vh) scale(1.1); opacity: 0; }
+    }
+
+    @keyframes pulseNeon {
+      0%, 100% { opacity: 0.5; transform: scale(1); box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+      50% { opacity: 0.9; transform: scale(1.02); box-shadow: 0 0 35px rgba(16, 185, 129, 0.5); }
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.85; }
+    }
+
+    .animate-cyber-spin { animation: cyberSpin 6s linear infinite; }
+    .animate-float-3d { animation: float3d ease-in-out infinite; }
+    .animate-particle-drift { animation: particleDrift linear infinite; }
+    .animate-pulse-neon { animation: pulseNeon 3.5s ease-in-out infinite; }
+    .animate-grid-pulse { animation: gridPulse 6s ease-in-out infinite; }
+
+    .bg-cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+
+    .bg-radial-vignette {
+      background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 60%),
+                  radial-gradient(circle at 85% 60%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
+                  #0a0d14;
+    }
+
+    /* Light Theme Overrides */
+    html.light {
+      color-scheme: light;
+    }
+    html.light body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    html.light .bg-radial-vignette {
+      background: radial-gradient(circle at 50% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 85% 65%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+                  #f8fafc !important;
+    }
+    html.light .bg-cyber-grid {
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+    }
+    html.light header {
+      background-color: rgba(255, 255, 255, 0.92) !important;
+      border-bottom-color: rgba(226, 232, 240, 0.9) !important;
+    }
+    html.light .glass-panel {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04) !important;
+    }
+    html.light .text-white { color: #0f172a !important; }
+    html.light .text-slate-100 { color: #1e293b !important; }
+    html.light .text-slate-200 { color: #334155 !important; }
+    html.light .text-slate-300 { color: #475569 !important; }
+    html.light .text-slate-400 { color: #64748b !important; }
+    html.light .bg-\[\#0d1320\]\/90,
+    html.light .bg-\[\#0a0f1d\]\/90,
+    html.light .bg-\[\#0e1422\]\/70,
+    html.light .bg-\[\#0d1320\]\/95 {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+    html.light .bg-\[\#162136\],
+    html.light .bg-\[\#141d2f\]\/90 {
+      background-color: #f1f5f9 !important;
+      border-color: rgba(16, 185, 129, 0.3) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0a0d14] text-slate-100 flex flex-col relative selection:bg-[#00ff88]/30 selection:text-[#00ff88] bg-radial-vignette transition-colors duration-300">
+
+  <!-- Background Cyber Grid overlay with subtle pulse -->
+  <div class="fixed inset-0 bg-cyber-grid opacity-60 pointer-events-none animate-grid-pulse"></div>
+
+  <!-- Dynamic 3D drifting micro-badges -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="hidden xl:flex absolute items-center gap-2 px-3 py-1.5 rounded-full bg-[#0d1320]/80 backdrop-blur-md border border-[#10B981]/30 shadow-lg text-xs font-mono-code animate-float-3d" style="top: 15%; left: 3%; animation-duration: 18s;">
+      <span class="w-5 h-5 rounded-full bg-[#10B981]/20 text-[#10B981] flex items-center justify-center text-[10px] font-bold">&lt;/&gt;</span>
+      <span class="text-slate-300 font-medium">HTML5 &amp; CSS3</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+    </div>
+    <div class="hidden xl:flex absolute items-center gap-2 px-3 py-1.5 rounded-full bg-[#0d1320]/80 backdrop-blur-md border border-[#fbbf24]/30 shadow-lg text-xs font-mono-code animate-float-3d" style="top: 32%; left: 91%; animation-duration: 22s; animation-delay: 2s;">
+      <span class="w-5 h-5 rounded-full bg-[#fbbf24]/20 text-[#fbbf24] flex items-center justify-center text-[10px] font-bold">PY</span>
+      <span class="text-slate-300 font-medium">Python &amp; Quant</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#fbbf24]"></span>
+    </div>
+    <div class="hidden xl:flex absolute items-center gap-2 px-3 py-1.5 rounded-full bg-[#0d1320]/80 backdrop-blur-md border border-[#00ff88]/30 shadow-lg text-xs font-mono-code animate-float-3d" style="top: 68%; left: 2%; animation-duration: 20s; animation-delay: 1.5s;">
+      <span class="w-5 h-5 rounded-full bg-[#00ff88]/20 text-[#00ff88] flex items-center justify-center text-[10px] font-bold">◆◆</span>
+      <span class="text-slate-300 font-medium">Double Diamond UX</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#00ff88]"></span>
+    </div>
+    <div class="hidden xl:flex absolute items-center gap-2 px-3 py-1.5 rounded-full bg-[#0d1320]/80 backdrop-blur-md border border-sky-400/30 shadow-lg text-xs font-mono-code animate-float-3d" style="top: 82%; left: 89%; animation-duration: 24s; animation-delay: 3s;">
+      <span class="w-5 h-5 rounded-full bg-sky-400/20 text-sky-400 flex items-center justify-center text-[10px] font-bold">🏸</span>
+      <span class="text-slate-300 font-medium">BWF Badminton</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+    </div>
+
+    <!-- Glowing micro-particles -->
+    <div class="absolute inset-0">
+      <div class="absolute rounded-full animate-particle-drift bg-[#00ff88]/30 shadow-[0_0_10px_#00ff88]" style="width: 4px; height: 4px; left: 12%; animation-duration: 14s; animation-delay: 0s;"></div>
+      <div class="absolute rounded-full animate-particle-drift bg-[#fbbf24]/40 shadow-[0_0_10px_#fbbf24]" style="width: 5px; height: 5px; left: 35%; animation-duration: 18s; animation-delay: 3s;"></div>
+      <div class="absolute rounded-full animate-particle-drift bg-[#00ff88]/30 shadow-[0_0_10px_#00ff88]" style="width: 3px; height: 3px; left: 62%; animation-duration: 16s; animation-delay: 1.5s;"></div>
+      <div class="absolute rounded-full animate-particle-drift bg-[#00ff88]/35 shadow-[0_0_10px_#00ff88]" style="width: 6px; height: 6px; left: 84%; animation-duration: 20s; animation-delay: 4s;"></div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVBAR -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-[#0a0d14]/85 border-b border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Wordmark & Emblem -->
+      <a href="javascript:void(0)" onclick="switchTab('home')" class="flex items-center gap-3 group focus:outline-none text-left">
+        <div class="relative w-11 h-11 rounded-xl p-0.5 bg-gradient-to-tr from-[#10B981] via-emerald-400 to-[#fbbf24] shadow-[0_0_20px_rgba(16,185,129,0.35)] shrink-0 transition-transform duration-300 group-hover:scale-105">
+          <div class="w-full h-full rounded-[10px] overflow-hidden bg-[#0c1220] flex items-center justify-center">
+            <img src="./Logo.jpg" alt="SU Digital Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-display font-extrabold text-[#00ff88] text-sm\'>SU</span>';" />
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-display font-black text-lg tracking-wider text-white group-hover:text-[#00ff88] transition-colors">SU DIGITAL</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88]"></span>
+          </div>
+          <p class="text-[11px] font-mono-code text-slate-400 group-hover:text-slate-200 transition-colors">Syed Muhammad Umer Chishti</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Tabs -->
+      <nav class="hidden md:flex items-center gap-1.5 p-1.5 rounded-xl bg-[#0e1422]/70 border border-white/[0.06] shadow-inner font-sans">
+        <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 text-xs lg:text-sm font-semibold text-white bg-[#162136] border border-[#00ff88]/30 rounded-lg shadow-sm transition-all">Home</button>
+        <button onclick="switchTab('about')" id="nav-about" class="nav-btn px-4 py-2 text-xs lg:text-sm font-medium text-slate-400 hover:text-white rounded-lg transition-all">About</button>
+        <button onclick="switchTab('services')" id="nav-services" class="nav-btn px-4 py-2 text-xs lg:text-sm font-medium text-slate-400 hover:text-white rounded-lg transition-all">Services</button>
+        <button onclick="switchTab('skills')" id="nav-skills" class="nav-btn px-4 py-2 text-xs lg:text-sm font-medium text-slate-400 hover:text-white rounded-lg transition-all">Skills</button>
+        <button onclick="switchTab('projects')" id="nav-projects" class="nav-btn px-4 py-2 text-xs lg:text-sm font-medium text-slate-400 hover:text-white rounded-lg transition-all">Projects</button>
+        <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn px-4 py-2 text-xs lg:text-sm font-medium text-slate-400 hover:text-white rounded-lg transition-all">Contact</button>
+      </nav>
+
+      <!-- Action CTAs: CLI Terminal, Theme Switcher & Get In Touch -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- CLI Button -->
+        <button onclick="toggleTerminal(true)" class="hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 hover:bg-[#00ff88]/15 border border-white/10 hover:border-[#00ff88]/30 text-slate-300 hover:text-[#00ff88] text-xs font-mono-code transition-all cursor-pointer" title="Open Cyber CLI Terminal (Ctrl+K or ~)">
+          <span class="text-[#00ff88] font-bold">&gt;_</span>
+          <span>CLI</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all cursor-pointer" title="Toggle Light/Dark Theme">
+          <span id="theme-icon">☀️</span>
+        </button>
+
+        <!-- Desktop Contact Button -->
+        <button onclick="switchTab('contact')" class="hidden sm:flex px-4 lg:px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase font-mono-code text-[#0a0d14] bg-[#00ff88] hover:bg-[#10b981] transition-all shadow-[0_0_20px_rgba(0,255,136,0.25)] items-center gap-1.5 cursor-pointer active:scale-95">
+          <span>Get In Touch</span>
+          <span>↗</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-out Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-white/10 bg-[#0c101a]/95 backdrop-blur-2xl px-4 py-5 space-y-3">
+      <div class="grid grid-cols-2 gap-2">
+        <button onclick="switchTab('home'); toggleMobileMenu(false);" class="px-4 py-3 text-left text-sm rounded-xl bg-white/5 hover:bg-white/10 text-slate-200">Home</button>
+        <button onclick="switchTab('about'); toggleMobileMenu(false);" class="px-4 py-3 text-left text-sm rounded-xl bg-white/5 hover:bg-white/10 text-slate-200">About</button>
+        <button onclick="switchTab('services'); toggleMobileMenu(false);" class="px-4 py-3 text-left text-sm rounded-xl bg-white/5 hover:bg-white/10 text-slate-200">Services</button>
+        <button onclick="switchTab('skills'); toggleMobileMenu(false);" class="px-4 py-3 text-left text-sm rounded-xl bg-white/5 hover:bg-white/10 text-slate-200">Skills</button>
+        <button onclick="switchTab('projects'); toggleMobileMenu(false);" class="px-4 py-3 text-left text-sm rounded-xl bg-white/5 hover:bg-white/10 text-slate-200">Projects</button>
+        <button onclick="switchTab('contact'); toggleMobileMenu(false);" class="px-4 py-3 text-left text-sm rounded-xl bg-white/5 hover:bg-white/10 text-slate-200">Contact</button>
+      </div>
+      <div class="pt-2 border-t border-white/10 flex items-center gap-2">
+        <button onclick="toggleTerminal(true); toggleMobileMenu(false);" class="flex-1 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-mono-code text-[#00ff88] text-center">&gt;_ Open CLI Terminal</button>
+        <button onclick="switchTab('contact'); toggleMobileMenu(false);" class="flex-1 py-2.5 rounded-xl bg-[#00ff88] text-[#0a0d14] text-xs font-bold font-mono-code text-center uppercase">Get In Touch</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SPA CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+
+    <!-- TAB 1: HOME VIEW -->
+    <div id="tab-home" class="spa-tab space-y-16">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden rounded-3xl glass-panel border border-white/[0.08] p-8 sm:p-12 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex items-center gap-2 text-xs font-mono-code text-slate-400">
+              <span class="text-[#00ff88] font-semibold">SU DIGITAL ARCHITECTURE</span>
+              <span>·</span>
+              <span>EST. 2022</span>
+              <span>·</span>
+              <span class="text-amber-400">FLAGSHIP PORTFOLIO</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-display leading-[1.15]">
+              Hello World, I'm <br />
+              <span class="bg-gradient-to-r from-white via-slate-100 to-[#00ff88] bg-clip-text text-transparent">
+                Syed Muhammad Umer Chishti
+              </span>
+            </h1>
+
+            <!-- Infinite Typewriter Text Loop -->
+            <div class="flex items-center gap-2 text-base sm:text-lg font-display tracking-wide min-h-[32px]">
+              <span class="text-slate-300 font-medium">Founder &amp;</span>
+              <span id="hero-typewriter" class="text-[#00ff88] font-bold drop-shadow-[0_0_12px_rgba(0,255,136,0.35)]">Lead Web Architect</span>
+              <span class="w-2 h-5 bg-[#00ff88] inline-block animate-pulse ml-0.5 shadow-[0_0_8px_#00ff88]"></span>
+            </div>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+              Architecting ultra-modern, high-velocity single-page applications, mission-critical financial interfaces, and bespoke glassmorphism digital ecosystems. Engineered with athlete-grade discipline, mathematically composed typography, and zero-compromise runtime performance.
+            </p>
+
+            <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 font-mono-code">
+              <button onclick="switchTab('projects')" class="px-6 py-3 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] font-semibold text-sm tracking-wide shadow-[0_0_25px_rgba(0,255,136,0.3)] transition-all cursor-pointer">
+                View 12+ Projects →
+              </button>
+              <button onclick="switchTab('services')" class="px-5 py-3 rounded-xl bg-[#141d2f]/90 hover:bg-[#1c2842] border border-white/10 text-slate-200 text-sm transition-all cursor-pointer">
+                Explore Services
+              </button>
+              <button onclick="toggleTerminal(true)" class="px-4 py-3 rounded-xl bg-white/5 hover:bg-[#00ff88]/15 border border-white/10 hover:border-[#00ff88]/40 text-slate-300 hover:text-[#00ff88] text-xs transition-all cursor-pointer">
+                &gt;_ Launch Terminal
+              </button>
+              <button onclick="toggleChat(true)" class="px-4 py-3 rounded-xl bg-white/5 hover:bg-amber-400/15 border border-white/10 hover:border-amber-400/40 text-slate-300 hover:text-amber-400 text-xs transition-all cursor-pointer">
+                💬 Ask AI Agent
+              </button>
+            </div>
+
+            <div class="pt-4 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="text-[#00ff88]">✓</span>
+                <span>Zero-Layout-Shift SPAs</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[#00ff88]">✓</span>
+                <span>Financial &amp; Trading UX</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[#fbbf24]">✓</span>
+                <span>Athlete-Grade Execution</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avatar with 360-Degree Continuous Rotating Neon Cyber-Borders -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div class="relative group w-full max-w-[340px] sm:max-w-[380px]">
+              <div class="absolute -inset-2 bg-gradient-to-tr from-[#10B981] via-emerald-500 to-[#fbbf24] rounded-3xl blur-xl opacity-40 group-hover:opacity-85 transition duration-500 animate-pulse-neon"></div>
+              
+              <div class="rotating-cyber-frame rounded-2xl shadow-[0_0_35px_rgba(16,185,129,0.35)]">
+                <div class="relative rounded-[14px] p-2 bg-[#0d1320]/95 backdrop-blur-xl border border-[#10B981]/50 overflow-hidden transition-all duration-300">
+                  <div class="relative aspect-square rounded-xl overflow-hidden bg-slate-900">
+                    <img src="./umer1.jpg" alt="Syed Muhammad Umer Chishti" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600';" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent opacity-80"></div>
+                    
+                    <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#0a0f1d]/90 backdrop-blur-md border border-white/10 flex items-center justify-between">
+                      <div>
+                        <p class="text-xs font-bold text-white font-display">Syed Muhammad Umer Chishti</p>
+                        <p class="text-[11px] text-[#10B981] font-mono-code font-semibold">SU Digital · Founder</p>
+                      </div>
+                      <span class="p-1.5 rounded-lg bg-[#10B981]/15 text-[#10B981] font-mono-code text-xs">&gt;_</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-2.5 pb-1 px-3 flex items-center justify-between text-[11px] font-mono-code text-slate-400">
+                    <span class="text-slate-300">STATUS: ACTIVE // DISPATCH READY</span>
+                    <span class="text-amber-400 font-semibold">KARACHI / GLOBAL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Animated Counters Section -->
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-xs font-mono-code text-slate-400 uppercase tracking-wider">Delivered Deployments</span>
+          <div class="flex items-baseline gap-2 mt-2">
+            <span class="text-4xl sm:text-5xl font-black font-display text-white counter" data-target="12">12</span>
+            <span class="text-2xl font-black text-[#00ff88]">+</span>
+            <span class="text-xs font-mono-code text-[#00ff88] ml-2">Flagship Builds</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400">Enterprise SPAs, car rental fleets, doctor portals, and marketplaces.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-xs font-mono-code text-slate-400 uppercase tracking-wider">Architectural Quality</span>
+          <div class="flex items-baseline gap-2 mt-2">
+            <span class="text-4xl sm:text-5xl font-black font-display text-white counter" data-target="100">100</span>
+            <span class="text-2xl font-black text-[#fbbf24]">%</span>
+            <span class="text-xs font-mono-code text-[#fbbf24] ml-2">Precision Code</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400">Strict type safety, zero compile warnings, sub-millisecond DOM reactivity.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-xs font-mono-code text-slate-400 uppercase tracking-wider">Engineering Track Record</span>
+          <div class="flex items-baseline gap-2 mt-2">
+            <span class="text-4xl sm:text-5xl font-black font-display text-white counter" data-target="4">4</span>
+            <span class="text-2xl font-black text-emerald-400">+</span>
+            <span class="text-xs font-mono-code text-emerald-400 ml-2">Years Experience</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400">Leading front-end design, Python computational automation, and full-stack UX.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 2: ABOUT VIEW -->
+    <div id="tab-about" class="spa-tab hidden space-y-12">
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-white/[0.08] space-y-8">
+        <div>
+          <span class="text-xs font-mono-code text-[#00ff88] uppercase tracking-wider">EXECUTIVE ARCHITECT PROFILE</span>
+          <h2 class="text-3xl font-extrabold text-white font-display mt-1">Syed Muhammad Umer Chishti</h2>
+          <p class="text-emerald-400 font-semibold font-mono-code text-sm">Founder &amp; Lead Architect at SU Digital | Web Developer &amp; UI Specialist</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p>
+            Operating at the nexus of high-speed front-end development, mathematical financial algorithms, and national athletic competition, Syed Muhammad Umer Chishti engineers digital applications with razor-sharp execution. As founder of SU Digital, he transforms complex operational workflows into seamless, responsive Single Page Applications with zero layout shift.
+          </p>
+          <p>
+            Beyond computational engineering, Umer brings national athletic discipline as a recognized competitor in BWF Air Badminton. This rigorous mindset translates directly into clean semantic code, sub-millisecond edge render speeds, and pixel-perfect glassmorphism design.
+          </p>
+        </div>
+
+        <!-- Double Diamond UX Process in About -->
+        <div class="pt-6 border-t border-white/[0.08]">
+          <h3 class="text-lg font-bold text-white font-display mb-4">Double Diamond UI/UX Architectural Methodology</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-[#00ff88]/30">
+              <span class="text-[#00ff88] font-bold text-xs font-mono-code">PHASE 01 // DIVERGENT</span>
+              <h4 class="text-white font-bold text-sm mt-1">Discover</h4>
+              <p class="text-xs text-slate-400 mt-1">Deep user research, stakeholder auditing, and latency benchmarking.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-[#fbbf24]/30">
+              <span class="text-[#fbbf24] font-bold text-xs font-mono-code">PHASE 02 // CONVERGENT</span>
+              <h4 class="text-white font-bold text-sm mt-1">Define</h4>
+              <p class="text-xs text-slate-400 mt-1">Information architecture, state schemas, and interaction guidelines.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-sky-400/30">
+              <span class="text-sky-400 font-bold text-xs font-mono-code">PHASE 03 // DIVERGENT</span>
+              <h4 class="text-white font-bold text-sm mt-1">Develop</h4>
+              <p class="text-xs text-slate-400 mt-1">Glassmorphism UI components, fluid micro-interactions, responsive styling.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-emerald-400/30">
+              <span class="text-emerald-400 font-bold text-xs font-mono-code">PHASE 04 // CONVERGENT</span>
+              <h4 class="text-white font-bold text-sm mt-1">Deliver</h4>
+              <p class="text-xs text-slate-400 mt-1">Edge deployment, 100% Lighthouse audit, and automated continuous delivery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SERVICES VIEW -->
+    <div id="tab-services" class="spa-tab hidden space-y-10">
+      <div>
+        <span class="text-xs font-mono-code text-[#00ff88] uppercase tracking-widest">PRECISION CAPABILITIES</span>
+        <h2 class="text-3xl font-extrabold text-white font-display mt-1">Architectural Services Matrix</h2>
+        <p class="text-slate-400 text-sm max-w-2xl mt-1">From high-velocity Single Page Applications to quantitative analytics dashboards and e-commerce storefronts.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-2xl">⚡</span>
+          <h3 class="text-lg font-bold text-white font-display mt-3">Full-Stack Web Architecture</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">High-performance Single Page Applications engineered with vanilla JavaScript, modern frameworks, and responsive grid layouts.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-[#00ff88]/30">
+          <span class="text-2xl">💎</span>
+          <div class="inline-block ml-2 px-2 py-0.5 rounded text-[10px] font-mono-code bg-[#00ff88]/20 text-[#00ff88]">DOUBLE DIAMOND UX</div>
+          <h3 class="text-lg font-bold text-white font-display mt-3">Glassmorphism UI/UX Design</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Modern cyber aesthetics featuring backdrop-blur glass panels, glowing neon highlights, and seamless mobile transitions.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-2xl">📈</span>
+          <h3 class="text-lg font-bold text-white font-display mt-3">Quantitative &amp; Python Tools</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Automated computational data analysis, financial models, Excel automation, and market telemetry interfaces.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-2xl">🏢</span>
+          <h3 class="text-lg font-bold text-white font-display mt-3">Enterprise Web Platforms</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Mission-critical client platforms including logistics dispatch, clinic management, and fleet rental software.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-2xl">🛍️</span>
+          <h3 class="text-lg font-bold text-white font-display mt-3">E-Commerce &amp; Digital Malls</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Multi-category marketplaces, instant WhatsApp dispatch checkout, product filtering, and persistent cart state.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <span class="text-2xl">🚀</span>
+          <h3 class="text-lg font-bold text-white font-display mt-3">Performance &amp; Edge Delivery</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Zero-layout-shift architecture, sub-second TTFB, Lighthouse 100 audits, and automated Netlify/Edge hosting.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: SKILLS VIEW (EXACT 8 SKILLS) -->
+    <div id="tab-skills" class="spa-tab hidden space-y-10">
+      <div>
+        <span class="text-xs font-mono-code text-[#00ff88] uppercase tracking-widest">TECHNICAL &amp; ATHLETIC COMPETENCIES</span>
+        <h2 class="text-3xl font-extrabold text-white font-display mt-1">The 8 Custom Competency Pillars</h2>
+        <p class="text-slate-400 text-sm max-w-2xl mt-1">Exact skill stack combining frontend engineering, quantitative Python programming, and athletic discipline.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 1) HTML5 -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-[#00ff88] font-bold">[01] CORE MARKUP</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">HTML5</h3>
+          <p class="text-xs text-slate-400 mt-2">Semantic structure, Web Accessibility (ARIA), Canvas APIs, and zero-layout-shift DOM hierarchies.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-[#00ff88] font-bold">98%</span>
+          </div>
+        </div>
+
+        <!-- 2) CSS & Style.css -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-[#00ff88] font-bold">[02] STYLING ENGINE</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">CSS &amp; Style.css</h3>
+          <p class="text-xs text-slate-400 mt-2">Advanced glassmorphism, 3D keyframe animations, CSS Grid, Flexbox, and neon cyberpunk aesthetics.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-[#00ff88] font-bold">96%</span>
+          </div>
+        </div>
+
+        <!-- 3) JavaScript -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-[#00ff88] font-bold">[03] CLIENT LOGIC</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">JavaScript</h3>
+          <p class="text-xs text-slate-400 mt-2">ES6+ syntax, asynchronous fetch streams, DOM mutation, localStorage persistence, and SPA routing.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-[#00ff88] font-bold">94%</span>
+          </div>
+        </div>
+
+        <!-- 4) Python Programming -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-[#fbbf24] font-bold">[04] COMPUTATION</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">Python Programming</h3>
+          <p class="text-xs text-slate-400 mt-2">Backend automation scripts, algorithmic modeling, financial data scraping, and quantitative logic.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-[#fbbf24] font-bold">90%</span>
+          </div>
+        </div>
+
+        <!-- 5) Web Development -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-[#00ff88] font-bold">[05] ARCHITECTURE</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">Web Development</h3>
+          <p class="text-xs text-slate-400 mt-2">End-to-end web deployment, cross-browser performance tuning, responsive UX, and edge infrastructure.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-[#00ff88] font-bold">97%</span>
+          </div>
+        </div>
+
+        <!-- 6) Financial Trading -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-[#fbbf24] font-bold">[06] QUANT &amp; MARKETS</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">Financial Trading</h3>
+          <p class="text-xs text-slate-400 mt-2">Technical analysis, risk management strategies, liquidity models, and high-frequency market mechanics.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-[#fbbf24] font-bold">92%</span>
+          </div>
+        </div>
+
+        <!-- 7) MS Office Suite -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-sky-400 font-bold">[07] BUSINESS TOOLS</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">MS Office Suite</h3>
+          <p class="text-xs text-slate-400 mt-2">Advanced Excel financial modeling, automated formulas, executive presentations, and documentation.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Mastery</span>
+            <span class="text-sky-400 font-bold">95%</span>
+          </div>
+        </div>
+
+        <!-- 8) Sports Achievements -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/[0.08]">
+          <div class="text-xs font-mono-code text-emerald-400 font-bold">[08] ATHLETIC DISCIPLINE</div>
+          <h3 class="text-lg font-bold text-white font-display mt-1">Sports Achievements</h3>
+          <p class="text-xs text-slate-400 mt-2">BWF Air Badminton competitor with national athletic discipline, relentless work ethic, and focus under pressure.</p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono-code">
+            <span class="text-slate-400">Dedication</span>
+            <span class="text-emerald-400 font-bold">99%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: PROJECTS VIEW (ALL 12 FLAGSHIP DEPLOYMENTS) -->
+    <div id="tab-projects" class="spa-tab hidden space-y-10">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono-code text-[#00ff88] uppercase tracking-widest">PRODUCTION SHOWCASE</span>
+          <h2 class="text-3xl font-extrabold text-white font-display mt-1">12 Flagship Deployments</h2>
+          <p class="text-slate-400 text-sm max-w-2xl mt-1">Explore live web applications built with clean code, glassmorphism aesthetics, and verified production performance.</p>
+        </div>
+        <div class="px-3 py-1.5 rounded-full bg-[#00ff88]/15 border border-[#00ff88]/30 text-xs font-mono-code text-[#00ff88] self-start sm:self-auto">
+          12 / 12 Production Ready
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- #01 Esports Hub -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800" alt="Esports Hub" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#01 GAMING</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Esports Hub Gaming Platform</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">High-velocity portal featuring live tournament brackets, player profile statistics, and responsive cyber dark aesthetics.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">HTML5 · CSS3 · JS</span>
+              <a href="https://umar-esports-portal.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #02 SU Digital Agency Platform -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" alt="SU Digital Agency Platform" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#02 AGENCY</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">SU Digital Agency Platform</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Corporate web solutions agency landing interface with interactive service matrices and client quote generators.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Vanilla JS · Netlify</span>
+              <a href="https://umar-agency-demo.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #03 Restaurant Web App -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800" alt="Restaurant Web App" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#03 DINING</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Restaurant Web App (Qatar &amp; Tarteeb)</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Culinary showcase featuring digital reservation calendar, interactive menu categorizer, and instant dispatch.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Tailwind · Responsive</span>
+              <a href="https://qatar-su-digital.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #04 Nexus E-Commerce -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800" alt="Nexus E-Commerce" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#04 RETAIL</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Nexus E-Commerce Store</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">High-conversion digital storefront with dynamic cart drawer, instantaneous SKU search, and responsive layout.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">JavaScript · Storefront</span>
+              <a href="https://su-digital-store.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #05 Luxury Real Estate -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800" alt="Luxury Real Estate" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#fbbf24]/90 text-[#0a0d14]">#05 PROPERTY</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Luxury Real Estate Showcase</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Architectural property presentation engine with high-resolution imagery, floor plan filters, and VIP inquiry forms.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Glassmorphism UI</span>
+              <button onclick="switchTab('contact')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono-code transition-all">Request Access</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #06 Architecture & Interior Studio -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" alt="Architecture Studio" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#fbbf24]/90 text-[#0a0d14]">#06 SPATIAL</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Architecture &amp; Interior Studio</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Minimalist spatial design portfolio crafted with Swiss typographic hierarchy and fluid lightbox viewing.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Minimalist Typography</span>
+              <button onclick="switchTab('contact')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono-code transition-all">Request Access</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #07 Doctor's Practice & Booking -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800" alt="Doctor Booking Portal" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#07 HEALTH</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Dr. Saif Practice &amp; Booking Portal</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Medical clinic appointment scheduling platform with patient triage intake forms and doctor availability views.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Appointment Flow</span>
+              <a href="https://dr-saif-portfolio.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #08 Commercial Cleaning Agency -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800" alt="Commercial Cleaning" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#08 SERVICE</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">Commercial Cleaning Agency Platform</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Enterprise facility maintenance platform with real-time square footage cost estimates and field crew scheduling.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Quoting Engine</span>
+              <a href="https://cleaning-su-agency.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #09 SU Luxury Rides Karachi -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800" alt="Luxury Car Rental" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#09 AUTOMOTIVE</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">SU Luxury Rides — Karachi Rent A Car</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Premium vehicle rental portal featuring dynamic SUV matching, live daily rates calculation, and instant WhatsApp dispatch.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Fleet Portal · WhatsApp</span>
+              <a href="https://su-luxury-rides-karachi-premium-car-rental.ai.studio/index.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #10 SU Digital Agency Mall -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800" alt="SU Digital Mall" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#10 MARKETPLACE</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">SU Digital Agency Mall</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Comprehensive digital marketplace showcasing marketing collateral, design templates, and instant purchase checkout.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">E-Commerce Storefront</span>
+              <a href="https://su-digital-agency-mall.ai.studio/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #11 SU Luxury Hotel & Hospitality -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800" alt="Luxury Hotel" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#11 RESORT</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">SU Luxury Hotel &amp; Hospitality</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Five-star hotel resort booking portal with suites preview, dining reservation, and VIP concierge dispatch.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Suites &amp; Amenities</span>
+              <a href="https://su-luxnry-hotel.ai.studio" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #12 SU Cargo Express Logistics -->
+        <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col">
+          <div class="relative w-full h-52 overflow-hidden bg-slate-900 border-b border-[#00ff88]/30">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Cargo Express" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono-code font-bold bg-[#00ff88]/90 text-[#0a0d14]">#12 FREIGHT</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-xl font-bold text-white font-display">SU Cargo Express Logistics</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">Full-scale cargo shipment tracking portal with real-time tracking numbers, waybill lookups, and delivery calculators.</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono-code text-slate-400">Live Waybill Tracking</span>
+              <a href="https://su-cargo-express.netlify.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] text-xs font-bold font-mono-code transition-all shadow-md">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 6: CONTACT VIEW -->
+    <div id="tab-contact" class="spa-tab hidden space-y-10">
+      <div>
+        <span class="text-xs font-mono-code text-[#00ff88] uppercase tracking-widest">DISPATCH CHANNELS</span>
+        <h2 class="text-3xl font-extrabold text-white font-display mt-1">Initiate Project Architecture</h2>
+        <p class="text-slate-400 text-sm max-w-2xl mt-1">Connect directly with Syed Muhammad Umer Chishti for high-velocity front-end engineering, custom SPAs, and consulting.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left: Quick Direct Channels -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- WhatsApp Channel Card -->
+          <div class="glass-panel rounded-2xl p-6 border-2 border-[#10B981]/40 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+            <span class="px-2.5 py-1 rounded text-[10px] font-mono-code font-bold bg-[#10B981]/20 text-[#10B981]">FASTEST RESPONSE // &lt; 2 HOURS</span>
+            <h3 class="text-lg font-bold text-white font-display mt-3">Direct WhatsApp Channel</h3>
+            <p class="text-2xl font-black font-mono-code text-[#00ff88] mt-2">+92 314 1114626</p>
+            <p class="text-xs text-slate-300 mt-1">Direct encrypted chat with Syed Muhammad Umer Chishti.</p>
+            
+            <a href="https://wa.me/923141114626?text=Hello%20Syed%20Muhammad%20Umer,%20I%20reached%20out%20through%20SU%20Digital%20Portfolio." target="_blank" rel="noopener noreferrer" class="mt-4 w-full py-3 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] font-bold text-xs font-mono-code flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(0,255,136,0.3)]">
+              <span>CHAT ON WHATSAPP ↗</span>
+            </a>
+          </div>
+
+          <!-- Email Channel Card -->
+          <div class="glass-panel rounded-2xl p-6 border border-white/10">
+            <span class="text-xs font-mono-code text-amber-400 font-semibold">OFFICIAL EMAIL</span>
+            <p class="text-base font-bold text-white font-mono-code mt-1 break-all">syedumer.digital@gmail.com</p>
+            <p class="text-xs text-slate-400 mt-1">For comprehensive RFPs, contracts, and NDA project briefs.</p>
+            
+            <div class="mt-4 flex gap-2">
+              <a href="mailto:syedumer.digital@gmail.com" class="flex-1 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono-code text-xs text-center transition-all">Send Email</a>
+              <button onclick="navigator.clipboard.writeText('syedumer.digital@gmail.com'); alert('Email copied to clipboard!');" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-mono-code transition-all">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Inquiry Form -->
+        <div class="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 border border-white/10">
+          <h3 class="text-xl font-bold text-white font-display mb-4">Send a Project Brief</h3>
+          <form onsubmit="handleInquirySubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-mono-code text-slate-400 block mb-1">Your Name *</label>
+                <input type="text" id="inq-name" required placeholder="Alexander Vance" class="w-full px-3.5 py-2.5 rounded-xl bg-[#070b14] border border-white/15 text-xs text-white focus:outline-none focus:border-[#00ff88]" />
+              </div>
+              <div>
+                <label class="text-xs font-mono-code text-slate-400 block mb-1">Your Email or Phone *</label>
+                <input type="text" id="inq-contact" required placeholder="alex@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-[#070b14] border border-white/15 text-xs text-white focus:outline-none focus:border-[#00ff88]" />
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-mono-code text-slate-400 block mb-1">Service Type *</label>
+              <select id="inq-service" class="w-full px-3.5 py-2.5 rounded-xl bg-[#070b14] border border-white/15 text-xs text-white focus:outline-none focus:border-[#00ff88]">
+                <option value="Single Page Application">Single Page Application (SPA)</option>
+                <option value="Glassmorphism UI/UX Redesign">Glassmorphism UI/UX Redesign</option>
+                <option value="Quantitative Trading & Python">Quantitative Trading &amp; Python</option>
+                <option value="Enterprise Platform">Enterprise Platform Engineering</option>
+                <option value="E-Commerce & Digital Mall">E-Commerce &amp; Digital Mall</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs font-mono-code text-slate-400 block mb-1">Project Details *</label>
+              <textarea id="inq-message" rows="4" required placeholder="Describe your timeline, objectives, and scope..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#070b14] border border-white/15 text-xs text-white focus:outline-none focus:border-[#00ff88]"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] font-bold text-xs font-mono-code transition-all shadow-[0_0_20px_rgba(0,255,136,0.3)]">
+              DISPATCH BRIEF TO UMER ↗
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       FULL ELITE FOOTER & BRAND CARD
+       ========================================== -->
+  <footer class="mt-24 border-t border-white/[0.08] bg-[#070a10] text-slate-400 py-16 relative z-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Full Elite Brand Card & Bio Block -->
+      <div class="glass-panel rounded-3xl p-8 sm:p-10 border border-white/10 relative overflow-hidden shadow-2xl">
+        <div class="absolute -top-24 -right-24 w-80 h-80 bg-[#00ff88]/10 rounded-full blur-[80px] pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-[#fbbf24]/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <!-- Left Column: Brand, Founder Credentials & Descriptive Bio -->
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="relative w-10 h-10 rounded-xl p-0.5 bg-gradient-to-tr from-[#10B981] via-emerald-400 to-[#fbbf24] shadow-md shrink-0">
+                <div class="w-full h-full rounded-[10px] overflow-hidden bg-[#0c1220] flex items-center justify-center">
+                  <img src="./Logo.jpg" alt="SU Digital Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-display font-extrabold text-[#00ff88] text-sm\'>SU</span>';" />
+                </div>
+              </div>
+              <div>
+                <span class="font-display font-black text-lg tracking-wider text-white">SU DIGITAL</span>
+                <span class="ml-2 px-2.5 py-0.5 rounded-full bg-[#00ff88]/15 border border-[#00ff88]/30 text-[10px] font-mono-code text-[#00ff88] font-semibold">
+                  FOUNDER &amp; LEAD ARCHITECT
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-white font-display">
+                Syed Muhammad Umer Chishti
+              </h3>
+              <p class="text-xs sm:text-sm text-emerald-400 font-mono-code font-medium">
+                Web Developer &amp; UI Specialist | Quant Automation | BWF Athlete
+              </p>
+            </div>
+
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-3xl">
+              Operating at the nexus of high-velocity front-end architecture, mathematical quantitative analysis, and national athletic discipline. Dedicated to building mission-critical Single Page Applications with zero layout shift, sub-millisecond edge render speeds, and pixel-perfect glassmorphism digital ecosystems.
+            </p>
+
+            <!-- Verified Performance Metrics -->
+            <div class="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono-code text-slate-300">
+              <div class="flex items-center gap-1.5">
+                <span class="text-[#00ff88]">✓</span>
+                <span>12+ Flagship Builds</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[#fbbf24]">✓</span>
+                <span>100% Precision Code</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span>
+                <span>Double Diamond UX Guaranteed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Instant WhatsApp Dispatch CTA -->
+          <div class="lg:col-span-4 flex flex-col sm:items-start lg:items-end justify-center space-y-3">
+            <div class="text-left lg:text-right">
+              <span class="text-[11px] font-mono-code text-slate-400 uppercase tracking-widest block">
+                PRIORITY CONSULTATION
+              </span>
+              <span class="text-base sm:text-lg font-black font-mono-code text-[#00ff88]">
+                +92 314 1114626
+              </span>
+            </div>
+
+            <a
+              href="https://wa.me/923141114626?text=Hello%20Syed%20Muhammad%20Umer,%20I%20reached%20out%20through%20SU%20Digital%20Portfolio."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] font-bold text-xs font-mono-code tracking-wide shadow-[0_0_20px_rgba(0,255,136,0.3)] hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+            >
+              <span>INITIATE DISPATCH</span>
+              <span>↗</span>
+            </a>
+
+            <p class="text-[10px] font-mono-code text-slate-500 text-left lg:text-right">
+              Direct WhatsApp · Sub-2hr Turnaround
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle Navigation & Social Presence Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pt-4">
+        
+        <!-- Quick-Access Social Links (4 Platforms) -->
+        <div class="lg:col-span-6 space-y-4">
+          <h4 class="text-xs font-mono-code text-slate-400 uppercase tracking-wider">
+            Verified Platform Presences
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/923141114626?text=Hello%20Syed%20Muhammad%20Umer,%20I%20reached%20out%20through%20SU%20Digital%20Portfolio." target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-[#0d1422] border border-[#10B981]/40 text-[#00ff88] hover:border-[#00ff88] text-xs font-mono-code transition-all flex items-center justify-between group">
+              <div class="flex items-center gap-2">
+                <span>💬</span>
+                <span class="font-semibold text-white group-hover:text-[#00ff88]">WhatsApp Direct</span>
+              </div>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-slate-400 group-hover:text-inherit">+92 314 1114626</span>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-[#0d1422] border border-white/10 text-slate-300 hover:border-slate-300 hover:text-white text-xs font-mono-code transition-all flex items-center justify-between group">
+              <div class="flex items-center gap-2">
+                <span>💻</span>
+                <span class="font-semibold text-white group-hover:text-inherit">GitHub</span>
+              </div>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-slate-400 group-hover:text-inherit">CODE REPOS</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-[#0d1422] border border-white/10 text-slate-300 hover:border-blue-400 hover:text-blue-400 text-xs font-mono-code transition-all flex items-center justify-between group">
+              <div class="flex items-center gap-2">
+                <span>💼</span>
+                <span class="font-semibold text-white group-hover:text-inherit">LinkedIn</span>
+              </div>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-slate-400 group-hover:text-inherit">NETWORK</span>
+            </a>
+
+            <!-- Fiverr Pro -->
+            <a href="https://www.fiverr.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-[#0d1422] border border-white/10 text-slate-300 hover:border-emerald-500 hover:text-emerald-400 text-xs font-mono-code transition-all flex items-center justify-between group">
+              <div class="flex items-center gap-2">
+                <span>⭐</span>
+                <span class="font-semibold text-white group-hover:text-inherit">Fiverr Pro</span>
+              </div>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-slate-400 group-hover:text-inherit">TOP RATED</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Nav Links -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-xs font-mono-code text-slate-400 uppercase tracking-wider">
+            Navigation Map
+          </h4>
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono-code">
+            <button onclick="switchTab('home')" class="text-left text-slate-400 hover:text-[#00ff88] transition-colors cursor-pointer py-1">Home</button>
+            <button onclick="switchTab('about')" class="text-left text-slate-400 hover:text-[#00ff88] transition-colors cursor-pointer py-1">About</button>
+            <button onclick="switchTab('services')" class="text-left text-slate-400 hover:text-[#00ff88] transition-colors cursor-pointer py-1">Services</button>
+            <button onclick="switchTab('skills')" class="text-left text-slate-400 hover:text-[#00ff88] transition-colors cursor-pointer py-1">Skills</button>
+            <button onclick="switchTab('projects')" class="text-left text-slate-400 hover:text-[#00ff88] transition-colors cursor-pointer py-1">Projects</button>
+            <button onclick="switchTab('contact')" class="text-left text-slate-400 hover:text-[#00ff88] transition-colors cursor-pointer py-1">Contact</button>
+          </div>
+        </div>
+
+        <!-- Direct Dispatch Contacts -->
+        <div class="lg:col-span-3 space-y-3 text-xs font-mono-code">
+          <h4 class="text-slate-400 uppercase tracking-wider">
+            Direct Dispatch
+          </h4>
+          <div class="space-y-2 text-slate-300">
+            <p class="flex items-center gap-2">
+              <span class="text-amber-400">✉</span>
+              <a href="mailto:syedumer.digital@gmail.com" class="hover:text-amber-400 transition-colors">syedumer.digital@gmail.com</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="text-[#00ff88]">📞</span>
+              <a href="https://wa.me/923141114626" target="_blank" rel="noopener noreferrer" class="hover:text-[#00ff88] transition-colors">+92 314 1114626</a>
+            </p>
+            <p class="flex items-center gap-2 text-slate-400">
+              <span class="text-sky-400">📍</span>
+              <span>Karachi, Pakistan (Global Dispatch)</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright Bar with Smooth Back to Top Button -->
+      <div class="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-code text-slate-400">
+        <div>
+          © 2026 SU Digital by <strong class="text-white">Syed Muhammad Umer Chishti</strong>. All Rights Reserved.
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="hidden sm:inline-block text-slate-500">
+            Double Diamond UI/UX Certified
+          </span>
+
+          <button
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer active:scale-95"
+            aria-label="Back to top"
+          >
+            <span>Back to Top</span>
+            <span>↑</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       INTERACTIVE CYBER CLI TERMINAL MODAL
+       ========================================== -->
+  <div id="cli-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
+    <div class="w-full max-w-3xl h-[560px] flex flex-col rounded-2xl bg-[#0a0e17]/95 border-2 border-[#00ff88]/30 shadow-[0_0_50px_rgba(0,255,136,0.2)] overflow-hidden font-mono-code text-xs">
+      
+      <!-- Window Titlebar -->
+      <div class="px-4 py-3 bg-[#0e1524] border-b border-white/10 flex items-center justify-between shrink-0 select-none">
+        <div class="flex items-center gap-2">
+          <div onclick="toggleTerminal(false)" class="w-3 h-3 rounded-full bg-rose-500 cursor-pointer"></div>
+          <div onclick="clearTerminal()" class="w-3 h-3 rounded-full bg-amber-500 cursor-pointer" title="Clear Buffer"></div>
+          <div class="w-3 h-3 rounded-full bg-emerald-500 cursor-pointer"></div>
+          <span class="ml-3 text-xs text-slate-300 font-semibold">umer@sudigital: ~ (zsh interactive)</span>
+        </div>
+        <button onclick="toggleTerminal(false)" class="text-slate-400 hover:text-white text-base">✕</button>
+      </div>
+
+      <!-- Output Screen -->
+      <div id="cli-output" class="flex-1 p-4 overflow-y-auto space-y-3 select-text">
+        <div class="space-y-1 text-slate-300">
+          <p class="text-[#00ff88] font-semibold">SU DIGITAL ARCHITECTURE CLI [v2.4.0-standalone]</p>
+          <p class="text-slate-400 text-[11px]">Founder: Syed Muhammad Umer Chishti · Karachi, Pakistan // Global</p>
+          <p class="text-slate-400 text-[11px]">Type <span class="text-[#00ff88] font-bold">help</span> to view all system commands. Try <span class="text-amber-400 font-bold">skills</span>, <span class="text-amber-400 font-bold">projects</span>, or <span class="text-amber-400 font-bold">contact</span>.</p>
+        </div>
+      </div>
+
+      <!-- Prompt Input -->
+      <form onsubmit="handleCliSubmit(event)" class="p-3 bg-[#070b12] border-t border-white/10 flex items-center gap-2 shrink-0">
+        <span class="text-[#00ff88] font-bold select-none">umer@sudigital:~$</span>
+        <input type="text" id="cli-input" placeholder="Type 'help', 'skills', 'projects'..." class="flex-1 bg-transparent text-white focus:outline-none placeholder:text-slate-600 font-mono-code text-xs" autocomplete="off" spellcheck="false" />
+        <button type="submit" class="px-2.5 py-1 rounded bg-[#00ff88]/20 border border-[#00ff88]/40 text-[#00ff88] text-[11px] font-bold">Execute</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       UNIVERSAL AI CHATBOT WIDGET
+       ========================================== -->
+  <!-- Floating Button -->
+  <div id="chat-launcher" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
+    <button onclick="toggleChat(true)" class="relative p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-[#10b981] to-[#00ff88] text-[#0a0d14] shadow-[0_0_25px_rgba(0,255,136,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer" title="Ask Umer's AI">
+      <span class="absolute -inset-1 rounded-2xl bg-[#00ff88] opacity-30 blur-sm animate-pulse-neon"></span>
+      <span class="absolute top-1 right-1 flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-[#0a0d14] border-2 border-[#00ff88]"></span>
+      </span>
+      <span class="relative z-10 text-lg">🤖</span>
+      <span class="hidden md:inline-block relative z-10 text-xs font-bold font-mono-code text-[#0a0d14]">Ask Umer's AI</span>
+    </button>
+  </div>
+
+  <!-- Chat Window -->
+  <div id="chat-window" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 hidden w-[94vw] sm:w-[400px] h-[560px] max-h-[88vh] flex flex-col rounded-2xl bg-[#0a0f1d]/95 backdrop-blur-2xl border-2 border-[#00ff88]/30 shadow-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="px-4 py-3 bg-[#0d1424] border-b border-white/10 flex items-center justify-between shrink-0">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-[#00ff88]/20 border border-[#00ff88]/40 flex items-center justify-center text-sm">🤖</div>
+        <div>
+          <h3 class="text-xs sm:text-sm font-bold text-white font-display flex items-center gap-1.5">
+            <span>SU Digital AI Assistant</span>
+            <span id="chat-engine-badge" class="px-1.5 py-0.2 rounded text-[9px] font-mono-code bg-[#00ff88]/20 text-[#00ff88]">AI</span>
+          </h3>
+          <p class="text-[11px] text-slate-400 font-mono-code">Syed Muhammad Umer's Representative</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button onclick="toggleChat(false)" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-rose-400">✕</button>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="px-3.5 py-1.5 bg-[#070b13] border-b border-white/5 flex items-center justify-between text-[11px] font-mono-code">
+      <span id="chat-status-text" class="text-slate-400">💬 Ask me anything</span>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="chat-messages" class="flex-1 p-3.5 overflow-y-auto space-y-3 select-text text-xs">
+      <div class="flex gap-2">
+        <div class="max-w-[85%] rounded-2xl rounded-bl-none px-3.5 py-2.5 bg-[#0f172a] text-slate-200 border border-white/10 leading-relaxed">
+          Hello! I'm Syed Muhammad Umer Chishti's AI agent. Ask me about his 12 flagship project deployments, 8 custom skills, Double Diamond UI/UX process, or click WhatsApp (+92 314 1114626) to connect directly!
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Prompts Chips -->
+    <div class="px-3 py-1.5 bg-[#070b13]/80 border-t border-white/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
+      <button onclick="sendQuickPrompt('Who is Syed Muhammad Umer Chishti?')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#00ff88]/15 border border-white/10 text-[10px] font-mono-code text-slate-300 hover:text-[#00ff88]">Who is Umer?</button>
+      <button onclick="sendQuickPrompt('List the 12 flagship projects with URLs.')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#00ff88]/15 border border-white/10 text-[10px] font-mono-code text-slate-300 hover:text-[#00ff88]">12 Projects</button>
+      <button onclick="sendQuickPrompt('Explain Double Diamond UI/UX process.')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#00ff88]/15 border border-white/10 text-[10px] font-mono-code text-slate-300 hover:text-[#00ff88]">Double Diamond</button>
+      <button onclick="sendQuickPrompt('How do I contact Umer on WhatsApp?')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#00ff88]/15 border border-white/10 text-[10px] font-mono-code text-slate-300 hover:text-[#00ff88]">WhatsApp Info</button>
+    </div>
+
+    <!-- Input Form -->
+    <form onsubmit="handleChatSubmit(event)" class="p-2.5 bg-[#0d1424] border-t border-white/10 flex items-center gap-2 shrink-0">
+      <input type="text" id="chat-input" placeholder="Ask anything about Umer Chishti &amp; SU Digital..." class="flex-1 px-3 py-2 rounded-xl bg-[#070a12] border border-white/10 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#00ff88]" />
+      <button type="submit" class="px-3 py-2 rounded-xl bg-[#00ff88] hover:bg-[#10b981] text-[#0a0d14] font-bold text-xs">Send</button>
+    </form>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT ARCHITECTURAL CONTROLLER
+       ========================================== -->
+  <script>
+    // 1. SPA Tab Navigation System
+    const tabs = ['home', 'about', 'services', 'skills', 'projects', 'contact'];
+    function switchTab(targetTab) {
+      tabs.forEach(tab => {
+        const el = document.getElementById(`tab-${tab}`);
+        const btn = document.getElementById(`nav-${tab}`);
+        if (el) {
+          if (tab === targetTab) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+        if (btn) {
+          if (tab === targetTab) {
+            btn.className = 'nav-btn px-4 py-2 text-xs lg:text-sm font-semibold text-white bg-[#162136] border border-[#00ff88]/30 rounded-lg shadow-sm transition-all';
+          } else {
+            btn.className = 'nav-btn px-4 py-2 text-xs lg:text-sm font-medium text-slate-400 hover:text-white rounded-lg transition-all';
+          }
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. Mobile Menu Toggle
+    function toggleMobileMenu(force) {
+      const menu = document.getElementById('mobile-menu');
+      if (force !== undefined) {
+        menu.classList.toggle('hidden', !force);
+      } else {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    // 3. Theme Toggle (Light / Dark)
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+      const icon = document.getElementById('theme-icon');
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        if (icon) icon.textContent = '🌙';
+        localStorage.setItem('su_digital_theme', 'light');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        if (icon) icon.textContent = '☀️';
+        localStorage.setItem('su_digital_theme', 'dark');
+      }
+    }
+
+    // Initialize Theme
+    (function initTheme() {
+      const saved = localStorage.getItem('su_digital_theme');
+      const icon = document.getElementById('theme-icon');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        if (icon) icon.textContent = '🌙';
+      }
+    })();
+
+    // 4. Infinite Typewriter Loop
+    const phrases = [
+      'Lead Web Architect',
+      'Glassmorphic UI Specialist',
+      'SU Digital Founder',
+      'Full-Stack Engineer',
+      'Athlete & Quant Discipline'
+    ];
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+
+    function tickTypewriter() {
+      const target = document.getElementById('hero-typewriter');
+      if (!target) return;
+      const currentPhrase = phrases[phraseIdx];
+
+      if (isDeleting) {
+        charIdx--;
+        target.textContent = currentPhrase.substring(0, charIdx);
+        if (charIdx <= 0) {
+          isDeleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(tickTypewriter, 300);
+          return;
+        }
+        setTimeout(tickTypewriter, 40);
+      } else {
+        charIdx++;
+        target.textContent = currentPhrase.substring(0, charIdx);
+        if (charIdx >= currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(tickTypewriter, 2200);
+          return;
+        }
+        setTimeout(tickTypewriter, 80);
+      }
+    }
+    setTimeout(tickTypewriter, 600);
+
+    // 5. Animated Scroll Counters
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 40));
+          const interval = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              el.textContent = target;
+              clearInterval(interval);
+            } else {
+              el.textContent = current;
+            }
+          }, 30);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.counter').forEach(c => observer.observe(c));
+
+    // 6. Interactive CLI Terminal Controller
+    function toggleTerminal(open) {
+      const modal = document.getElementById('cli-modal');
+      modal.classList.toggle('hidden', !open);
+      if (open) {
+        setTimeout(() => document.getElementById('cli-input').focus(), 100);
+      }
+    }
+
+    function clearTerminal() {
+      document.getElementById('cli-output').innerHTML = `
+        <div class="text-[#00ff88] font-semibold">Terminal buffer cleared. Type 'help' for commands.</div>
+      `;
+    }
+
+    function handleCliSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('cli-input');
+      const val = input.value.trim();
+      if (!val) return;
+      input.value = '';
+
+      const output = document.getElementById('cli-output');
+      const cmd = val.toLowerCase();
+
+      let reply = '';
+      if (cmd === 'help') {
+        reply = `
+          <div class="space-y-1 text-slate-300">
+            <p class="text-[#00ff88] font-bold">SYSTEM COMMANDS:</p>
+            <p><span class="text-[#00ff88]">help</span> - List available commands</p>
+            <p><span class="text-[#00ff88]">skills</span> - View 8 technical and athletic skill proficiencies</p>
+            <p><span class="text-[#00ff88]">projects</span> - List all 12 flagship production deployments</p>
+            <p><span class="text-[#00ff88]">contact</span> - Direct WhatsApp and dispatch contacts</p>
+            <p><span class="text-[#00ff88]">doublediamond</span> - View UI/UX 4-stage architectural process</p>
+            <p><span class="text-[#00ff88]">about</span> - Founder biography & performance metrics</p>
+            <p><span class="text-[#00ff88]">theme</span> - Toggle Dark/Light mode</p>
+            <p><span class="text-[#00ff88]">ai</span> - Open AI Chatbot Assistant</p>
+            <p><span class="text-[#00ff88]">clear</span> - Clear terminal window</p>
+            <p><span class="text-[#00ff88]">exit</span> - Close terminal window</p>
+          </div>
+        `;
+      } else if (cmd === 'skills') {
+        reply = `
+          <div class="space-y-1 text-slate-300 font-mono-code text-[11px]">
+            <p class="text-[#00ff88] font-bold">8 CORE COMPETENCY PILLARS:</p>
+            <p>[01] HTML5 ............................ 98% [==================.]</p>
+            <p>[02] CSS &amp; Style.css ................... 96% [=================..]</p>
+            <p>[03] JavaScript ES6+ ................... 94% [=================..]</p>
+            <p>[04] Python Programming ................ 90% [================... ]</p>
+            <p>[05] Web Development ................... 97% [==================.]</p>
+            <p>[06] Financial Trading ................. 92% [=================..]</p>
+            <p>[07] MS Office Suite ................... 95% [=================..]</p>
+            <p>[08] BWF Badminton Discipline .......... 99% [===================]</p>
+          </div>
+        `;
+      } else if (cmd === 'projects') {
+        reply = `
+          <div class="space-y-1.5 text-slate-300 text-[11px]">
+            <p class="text-[#00ff88] font-bold">12 FLAGSHIP DEPLOYMENTS:</p>
+            <p>1. Esports Hub: <a href="https://umar-esports-portal.netlify.app" target="_blank" class="text-[#00ff88] underline">umar-esports-portal.netlify.app</a></p>
+            <p>2. SU Digital Agency: <a href="https://umar-agency-demo.netlify.app" target="_blank" class="text-[#00ff88] underline">umar-agency-demo.netlify.app</a></p>
+            <p>3. Restaurant Web App: <a href="https://qatar-su-digital.netlify.app" target="_blank" class="text-[#00ff88] underline">qatar-su-digital.netlify.app</a></p>
+            <p>4. Nexus E-Commerce: <a href="https://su-digital-store.netlify.app" target="_blank" class="text-[#00ff88] underline">su-digital-store.netlify.app</a></p>
+            <p>7. Doctor Booking: <a href="https://dr-saif-portfolio.netlify.app" target="_blank" class="text-[#00ff88] underline">dr-saif-portfolio.netlify.app</a></p>
+            <p>8. Commercial Cleaning: <a href="https://cleaning-su-agency.netlify.app" target="_blank" class="text-[#00ff88] underline">cleaning-su-agency.netlify.app</a></p>
+            <p>9. SU Luxury Rides (Karachi): <a href="https://su-luxury-rides-karachi-premium-car-rental.ai.studio/index.html" target="_blank" class="text-[#00ff88] underline">su-luxury-rides-karachi-premium-car-rental.ai.studio</a></p>
+            <p>10. SU Digital Agency Mall: <a href="https://su-digital-agency-mall.ai.studio/" target="_blank" class="text-[#00ff88] underline">su-digital-agency-mall.ai.studio</a></p>
+            <p>11. SU Luxury Hotel: <a href="https://su-luxnry-hotel.ai.studio" target="_blank" class="text-[#00ff88] underline">su-luxnry-hotel.ai.studio</a></p>
+            <p>12. SU Cargo Express: <a href="https://su-cargo-express.netlify.app" target="_blank" class="text-[#00ff88] underline">su-cargo-express.netlify.app</a></p>
+          </div>
+        `;
+      } else if (cmd === 'contact') {
+        reply = `
+          <div class="space-y-1 text-slate-300">
+            <p class="text-[#00ff88] font-bold">DISPATCH CONTACTS:</p>
+            <p>Direct WhatsApp: <a href="https://wa.me/923141114626" target="_blank" class="text-[#00ff88] underline">+92 314 1114626</a></p>
+            <p>Official Email: <a href="mailto:syedumer.digital@gmail.com" class="text-amber-400 underline">syedumer.digital@gmail.com</a></p>
+            <p>Location: Karachi, Pakistan (Global Remote Availability)</p>
+          </div>
+        `;
+      } else if (cmd === 'about') {
+        reply = `
+          <p class="text-slate-300">Syed Muhammad Umer Chishti is the Founder & Lead Architect at SU Digital. Specializing in high-performance SPAs, quantitative computational tools with Python, and glassmorphic UI design, reinforced with national BWF Air Badminton sports discipline.</p>
+        `;
+      } else if (cmd === 'theme') {
+        toggleTheme();
+        reply = `<p class="text-[#00ff88]">Theme toggled successfully!</p>`;
+      } else if (cmd === 'ai') {
+        toggleTerminal(false);
+        toggleChat(true);
+        return;
+      } else if (cmd === 'clear') {
+        clearTerminal();
+        return;
+      } else if (cmd === 'exit') {
+        toggleTerminal(false);
+        return;
+      } else {
+        reply = `<p class="text-rose-400">Command not recognized: "${val}". Type 'help' for available commands.</p>`;
+      }
+
+      output.innerHTML += `
+        <div class="space-y-1">
+          <div class="text-slate-400"><span class="text-[#00ff88] font-bold">umer@sudigital:~$</span> ${val}</div>
+          <div class="pl-3 border-l border-white/10">${reply}</div>
+        </div>
+      `;
+      output.scrollTop = output.scrollHeight;
+    }
+
+    // Keyboard Hotkeys (Ctrl+K or `~` to toggle CLI)
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const modal = document.getElementById('cli-modal');
+        toggleTerminal(modal.classList.contains('hidden'));
+      } else if (e.key === '`' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+        e.preventDefault();
+        const modal = document.getElementById('cli-modal');
+        toggleTerminal(modal.classList.contains('hidden'));
+      }
+    });
+
+    // 7. Universal AI Chatbot Controller
+    function toggleChat(open) {
+      document.getElementById('chat-window').classList.toggle('hidden', !open);
+      document.getElementById('chat-launcher').classList.toggle('hidden', open);
+      if (open) {
+        setTimeout(() => document.getElementById('chat-input').focus(), 100);
+      }
+    }
+
+    // ---------- AI chat (key is kept safely on the server) ----------
+    let chatHistory = [];
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    function formatReply(str) {
+      return escapeHtml(str).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    async function askAI(message) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 30000);
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, history: chatHistory.slice(-10) }),
+          signal: ctrl.signal
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.reply) throw new Error(data.error || ('HTTP ' + res.status));
+        return data.reply;
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    function sendQuickPrompt(prompt) {
+      document.getElementById('chat-input').value = prompt;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    async function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+
+      const container = document.getElementById('chat-messages');
+
+      // Append user message
+      container.innerHTML += `
+        <div class="flex justify-end">
+          <div class="max-w-[85%] rounded-2xl rounded-br-none px-3.5 py-2.5 bg-[#00ff88] text-[#0a0d14] font-medium leading-relaxed">
+            ${escapeHtml(text)}
+          </div>
+        </div>
+      `;
+      container.scrollTop = container.scrollHeight;
+
+      // Loading bubble
+      const loadingId = 'loading-' + Date.now();
+      container.innerHTML += `
+        <div id="${loadingId}" class="flex gap-2">
+          <div class="max-w-[85%] rounded-2xl rounded-bl-none px-3.5 py-2.5 bg-[#0f172a] text-slate-400 border border-white/10 flex items-center gap-1.5">
+            <span class="animate-pulse">Thinking...</span>
+          </div>
+        </div>
+      `;
+      container.scrollTop = container.scrollHeight;
+
+      let reply = '';
+      try {
+        reply = await askAI(text);
+        chatHistory.push({ role: 'user', text });
+        chatHistory.push({ role: 'model', text: reply });
+        if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+      } catch (err) {
+        // AI unreachable (offline / server busy) -> graceful fallback
+        reply = getBuiltInReply(text);
+      }
+
+      const loadEl = document.getElementById(loadingId);
+      if (loadEl) loadEl.remove();
+
+      container.innerHTML += `
+        <div class="flex gap-2">
+          <div class="max-w-[85%] rounded-2xl rounded-bl-none px-3.5 py-2.5 bg-[#0f172a] text-slate-200 border border-white/10 leading-relaxed whitespace-pre-line">
+            ${formatReply(reply)}
+          </div>
+        </div>
+      `;
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function getBuiltInReply(query) {
+      const q = query.toLowerCase();
+      if (q.includes('who') || q.includes('about') || q.includes('umer') || q.includes('chishti')) {
+        return "Syed Muhammad Umer Chishti is the Founder & Lead Architect at SU Digital. He combines 4+ years of front-end engineering, quantitative Python computational tools, and national-level sports discipline as a recognized BWF Air Badminton competitor.";
+      }
+      if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('demo')) {
+        return "Umer has 12 flagship deployments including:\n• Esports Hub (umar-esports-portal.netlify.app)\n• SU Digital Agency (umar-agency-demo.netlify.app)\n• Restaurant Web App (qatar-su-digital.netlify.app)\n• Nexus E-Commerce (su-digital-store.netlify.app)\n• Doctor Practice Booking (dr-saif-portfolio.netlify.app)\n• Commercial Cleaning (cleaning-su-agency.netlify.app)\n• SU Luxury Rides Karachi (su-luxury-rides-karachi-premium-car-rental.ai.studio)\n• SU Digital Mall (su-digital-agency-mall.ai.studio)\n• SU Luxury Hotel (su-luxnry-hotel.ai.studio)\n• SU Cargo Express (su-cargo-express.netlify.app)";
+      }
+      if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('python') || q.includes('html')) {
+        return "Core Competencies:\n1) HTML5\n2) CSS & Style.css\n3) JavaScript ES6+\n4) Python Programming\n5) Full-Stack Web Development\n6) Financial Trading & Quant Analysis\n7) MS Office Suite (Financial Modeling)\n8) Athletic Discipline (BWF Air Badminton)";
+      }
+      if (q.includes('double diamond') || q.includes('ux') || q.includes('design')) {
+        return "The Double Diamond UI/UX methodology consists of:\n1. Discover (Divergent user research)\n2. Define (Convergent architectural scoping)\n3. Develop (Divergent glassmorphic component creation)\n4. Deliver (Convergent edge deployment & 100% audit)";
+      }
+      if (q.includes('contact') || q.includes('whatsapp') || q.includes('hire') || q.includes('phone') || q.includes('email')) {
+        return "Contact Syed Muhammad Umer Chishti directly:\n• WhatsApp: +92 314 1114626 (wa.me/923141114626)\n• Email: syedumer.digital@gmail.com\n• Typical response time is under 2 hours!";
+      }
+      return "Syed Muhammad Umer Chishti specializes in high-velocity SPAs, quantitative automation with Python, and glassmorphic UI design. You can ask me about his 12 flagship project demos, explore his core skills, or connect directly on WhatsApp (+92 314 1114626)!";
+    }
+
+    // 8. Contact Form Dispatch Handler
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('inq-name').value;
+      const contact = document.getElementById('inq-contact').value;
+      const service = document.getElementById('inq-service').value;
+      const message = document.getElementById('inq-message').value;
+
+      const formatted = `Hello Syed Muhammad Umer, my name is ${name} (${contact}). I am interested in ${service}. Brief: ${message}`;
+      const url = `https://wa.me/923141114626?text=${encodeURIComponent(formatted)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
